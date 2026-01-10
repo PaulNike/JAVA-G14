@@ -23,5 +23,14 @@ public class Main5 {
 
         NivelAcceso n = NivelAcceso.MEDIO;
         System.out.println(n + " Tiene codigo: "+ n.getCodigo());
+
+        System.out.println("========================= EJERCICIO 4========================");
+
+        int a = 10, b = 3;
+
+        Operacion op = Operacion.RESTA;
+        int resultado = op.aplicar(a,b);
+
+        System.out.println("Resultado: " + resultado);
     }
 }

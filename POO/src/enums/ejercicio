@@ -1,0 +1,42 @@
+Crea un enum llamado NivelCalificacion que
+contenga los siguientes valores:
+
+BAJO
+
+MEDIO
+
+ALTO
+
+Cada valor del enum debe tener:
+    Un código entero
+    Una descripción (String)
+
+Ejemplo (solo como idea, no es código):
+
+    BAJO → código 1, descripción “Rendimiento insuficiente”
+
+    MEDIO → código 2, descripción “Rendimiento aceptable”
+
+    ALTO → código 3, descripción “Rendimiento destacado”
+
+El enum debe cumplir lo siguiente:
+
+    Tener los atributos privados
+
+    Usar un constructor para inicializar los valores
+
+    Tener métodos get para obtener el código y la descripción
+
+En la clase Main:
+
+    Declara una variable del tipo NivelCalificacion
+
+    Asigna uno de los valores del enum
+
+    Imprime por consola:
+
+        El nombre del nivel
+
+        Su código
+
+        Su descripción

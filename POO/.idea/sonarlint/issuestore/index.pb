@@ -55,3 +55,5 @@ B
 src/enums/Rol.java,d\1\d15502ec43354fee869557f994de8c24d69b4b33
 J
 src/enums/NivelAcceso.java,3\e\3ee06424cc1e27e092ef28e761c31091233e72b1
+C
+src/enums/ejercicio,f\b\fb36ae35c7a33c4f37841fdf8207c23c64759446

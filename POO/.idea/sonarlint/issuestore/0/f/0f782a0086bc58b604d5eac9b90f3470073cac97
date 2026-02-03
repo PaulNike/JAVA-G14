@@ -17,3 +17,8 @@ F	java:S106+"+Replace this use of System.out by a logger.(”˜Ô8ƒ±Î®º3
 L	java:S106,"+Replace this use of System.out by a logger.(îŞ–’şÿÿÿÿ8á¡Ï®º3
 L	java:S106-"+Replace this use of System.out by a logger.(ñÇïÄÿÿÿÿÿ8³•Ğ®º3
 L	java:S106/"+Replace this use of System.out by a logger.(¬’šÄıÿÿÿÿ8õ»Ò®º3
+G	java:S1062"+Replace this use of System.out by a logger.(ÂÒÌ›8Ûê¶¯º3
+L	java:S1066"+Replace this use of System.out by a logger.(§ùğüÿÿÿÿ8Ûê¶¯º3
+G	java:S1067"+Replace this use of System.out by a logger.(şÕšû8Üê¶¯º3
+G	java:S1068"+Replace this use of System.out by a logger.(Ñ¨ï¼8Üê¶¯º3
+L	java:S106:"+Replace this use of System.out by a logger.(êÓæøùÿÿÿÿ8İê¶¯º3

@@ -61,3 +61,5 @@ H
 src/enums/Operacion.java,5\d\5d7340da915e929516876c5fbebe2774cd4c8065
 I
 src/enums/HttpStatus.java,b\8\b8556e383f16f66c97a11401d232aed6224a2d7f
+K
+src/enums/EstadoPedido.java,f\7\f770db4ec102975c5292d4bde0673f1698fdcf8f

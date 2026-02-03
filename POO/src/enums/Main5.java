@@ -46,5 +46,16 @@ public class Main5 {
         }else {
             System.out.println("Codigo invalido " + code);
         }
+
+        System.out.println("============================================");
+        int code2 = 3;
+        EstadoPedido estado = EstadoPedido.fromCodigo(code2);
+        if(estado!=null){
+            System.out.println("Nombre del estado :" + estado);
+            System.out.println("Codigo del estado :" + estado.getCodigo());
+            System.out.println("Descripcion :" + estado.getDescripcion());
+        }else {
+            System.out.println("Error");
+        }
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class AlumnoService {
@@ -69,5 +70,17 @@ public class AlumnoService {
                 a.getNombre(),
                 a.getEdad());
     }
+
+    List<String> nombres = List.of("Ana", "Luis", "Pedro");
+    Stream<String> stream = nombres.stream();
+
+    Fuente -> Operaciones intermedias -> operaciones terminal
+    nombres.stream()  -> (map(), filter(), sorted(), distinct()) -> toList(), forEach(), findFirts(), count()
+
+    Collecion -> caja con datos
+    Stream -> cinta transportadora
+    map/filter -> maquinas
+    toList() -> caja final lista para enviarse}
+
 
 }

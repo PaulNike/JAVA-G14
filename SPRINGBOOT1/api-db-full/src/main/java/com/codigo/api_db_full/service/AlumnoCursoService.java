@@ -1,5 +1,6 @@
 package com.codigo.api_db_full.service;
 
+import com.codigo.api_db_full.exception.ResourceNotFoundException;
 import com.codigo.api_db_full.model.Alumno;
 import com.codigo.api_db_full.model.Curso;
 import com.codigo.api_db_full.repository.AlumnoRepository;
@@ -20,8 +21,10 @@ public class AlumnoCursoService {
 
     @Transactional
     public Alumno agregarCurso(Long alumnoId, Long cursoId) {
-        Alumno a = alumnoRepo.findById(alumnoId).orElseThrow();
-        Curso c = cursoRepo.findById(cursoId).orElseThrow();
+        Alumno a = alumnoRepo.findById(alumnoId)
+                .orElseThrow(() -> new ResourceNotFoundException("Alumno no encontrado con ID: " + alumnoId));
+        Curso c = cursoRepo.findById(cursoId)
+                .orElseThrow(() -> new ResourceNotFoundException("Curso no encontrado con ID: "+ cursoId));
 
         a.addCurso(c); // sincroniza ambos lados
         return a;

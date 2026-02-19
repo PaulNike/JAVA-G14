@@ -1,9 +1,11 @@
 package com.codigo.api_db_full.service;
 
 import com.codigo.api_db_full.dto.AlumnoCreateRequest;
+import com.codigo.api_db_full.exception.BusinessConflictException;
 import com.codigo.api_db_full.model.Alumno;
 import com.codigo.api_db_full.model.PerfilAlumno;
 import com.codigo.api_db_full.repository.AlumnoRepository;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,17 +19,28 @@ public class AlumnoService {
 
     @Transactional
     public Alumno crearConPerfil(AlumnoCreateRequest req) {
-        Alumno a = new Alumno();
-        a.setNombre(req.nombre());
-        a.setEmail(req.email());
 
-        PerfilAlumno p = new PerfilAlumno();
-        p.setTelefono(req.telefono());
-        p.setDireccion(req.direccion());
+        //DataIntegrityViolationException
+        if (alumnoRepo.existsByEmail(req.email())) throw new BusinessConflictException("Alumno con Email ya existe: " + req.email());
+        if (alumnoRepo.existsByTelefono(req.telefono())) throw new BusinessConflictException("Alumno con Telfono ya existe: " + req.telefono());
 
-        a.setPerfil(p);
+        try {
+            Alumno a = new Alumno();
+            a.setNombre(req.nombre());
+            a.setEmail(req.email());
 
-        return alumnoRepo.save(a);
+            PerfilAlumno p = new PerfilAlumno();
+            p.setTelefono(req.telefono());
+            p.setDireccion(req.direccion());
+
+            a.setPerfil(p);
+
+            return alumnoRepo.save(a);
+        }catch (DataIntegrityViolationException e){
+            throw new BusinessConflictException(
+                    "Ya existe un alumno con el email: "+ req.email());
+        }
+
     }
 
     public Alumno obtener(Long id){

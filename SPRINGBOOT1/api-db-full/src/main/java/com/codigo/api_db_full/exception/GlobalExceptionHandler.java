@@ -16,4 +16,10 @@ public class GlobalExceptionHandler {
                 .body(new BaseResponse<>(4004,ex.getMessage(),null));
     }
 
+    @ExceptionHandler(BusinessConflictException.class)
+    public ResponseEntity<BaseResponse<Object>> handleConflict(BusinessConflictException ex){
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(new BaseResponse<>(4009,ex.getMessage(),null));
+    }
+
 }

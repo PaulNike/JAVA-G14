@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "decoletaReniecClient", url = "${decoleta.base-url}")
+@FeignClient(
+        name = "decoletaReniecClient",
+        url = "${decoleta.base-url}",
+        configuration = com.codigo.apis_externas.config.FeignErrorConfig.class)
 public interface DecoletaReniecFeignClient {
 
     @GetMapping("/v1/reniec/dni")

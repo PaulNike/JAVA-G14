@@ -19,6 +19,7 @@ public class EmpresaController {
 
 
     private final EmpresaService service;
+    private final EmpresaService service2;
 
 
     @PostMapping

@@ -143,4 +143,32 @@ public class EmpresaServiceImpl implements EmpresaService {
         response.setObjeto(data);
         return ResponseEntity.ok(response);
     }
+    private ResponseEntity<BaseResponse<List<Empresa>>> buildResponseList1(int code, String message, Optional<List<Empresa>> data) {
+        BaseResponse<List<Empresa>> response = new BaseResponse<>();
+        response.setCode(code);
+        response.setMessage(message);
+        response.setObjeto(data);
+        return ResponseEntity.ok(response);
+    }
+    private ResponseEntity<BaseResponse<List<Empresa>>> buildResponseList2(int code, String message, Optional<List<Empresa>> data) {
+        BaseResponse<List<Empresa>> response = new BaseResponse<>();
+        response.setCode(code);
+        response.setMessage(message);
+        response.setObjeto(data);
+        return ResponseEntity.ok(response);
+    }
+    private ResponseEntity<BaseResponse<List<Empresa>>> buildResponseList3(int code, String message, Optional<List<Empresa>> data) {
+        BaseResponse<List<Empresa>> response = new BaseResponse<>();
+        response.setCode(code);
+        response.setMessage(message);
+        response.setObjeto(data);
+        return ResponseEntity.ok(response);
+    }
+    private ResponseEntity<BaseResponse<List<Empresa>>> buildResponseList4(int code, String message, Optional<List<Empresa>> data) {
+        BaseResponse<List<Empresa>> response = new BaseResponse<>();
+        response.setCode(code);
+        response.setMessage(message);
+        response.setObjeto(data);
+        return ResponseEntity.ok(response);
+    }
 }

@@ -14,7 +14,7 @@ public class Constants {
     public static final String MSJ_OK="Transacción exitosa";
     public static final Integer CODE_EXIST=4001;
     public static final String MSJ_EXIST="La empresa ya existe";
-    public static final Integer CODE_EMPRESA_NO_EXIST=4001;
+    public static final Integer CODE_EMPRESA_NO_EXIST=4010;
     public static final String MSJ_EMPRESA_NO_EXIST="No hay datos";
 
     public static final boolean AGENTE_RETENCION_TRUE = true;

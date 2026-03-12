@@ -23,8 +23,8 @@
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/coverage-reports/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 		<!-- Propiedad de configuracion para SONARCLOUD-->
-		<sonar.projectKey>codigo-tecsup_unitetestingnike</sonar.projectKey>
-		<sonar.organization>codigo-tecsup</sonar.organization>
+		<sonar.projectKey>paulniketest_unit-testing</sonar.projectKey>
+		<sonar.organization>paulniketest</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.exclusions>
 			**/com/codigo/unit_testing/aggregates/constants/Constants.java,

@@ -6,6 +6,7 @@ import com.codigo.msregisterhexa.infrastructure.entity.PersonEntity;
 import com.codigo.msregisterhexa.infrastructure.repository.PersonRepository;
 import com.codigo.msregisterhexa.infrastructure.response.ResponseReniec;
 import com.codigo.msregisterhexa.infrastructure.rest.ReniecClient;
+import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +16,7 @@ import java.sql.Timestamp;
 import java.util.Optional;
 
 @Service
+@Log4j2
 public class PersonAdapter implements PersonServiceOut {
 
     private final ReniecClient reniecClient;
@@ -41,14 +43,14 @@ public class PersonAdapter implements PersonServiceOut {
     }
 
     private ResponseReniec executeReniec(String dni){
-        //log.info("Consultando los datos a RENIEC para el DNI: {}", dni);
+        log.info("Consultando los datos a RENIEC para el DNI: {}", dni);
         String header = "Bearer "+token;
         return Optional.ofNullable(reniecClient.consultarDni(dni,header))
                 .orElseThrow(() -> new RuntimeException("Error al consutla con Reniec"));
     }
 
     private PersonEntity getEntityForSave(String dni) {
-        //log.info("{} - {} INICIO, getEntityForSave to: ", dni);
+        log.info("{} - {} INICIO, getEntityForSave to: ", dni);
         ResponseReniec responseReniec = executeReniec(dni);
 
         if (responseReniec == null ||
@@ -60,6 +62,7 @@ public class PersonAdapter implements PersonServiceOut {
         person.setStatus(1);
         person.setUserCreate("PRODRIGUEZ");
         person.setTypeDoc("DNI");
+        log.info("{} - {} FIN, getEntityForSave to: ", dni);
         return person;
     }
 

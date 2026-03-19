@@ -1,9 +1,21 @@
 package com.codigo.msregisterhexa.application;
 
+import jakarta.persistence.Entity;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.persistence.autoconfigure.EntityScan;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.openfeign.FeignAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(scanBasePackages = "com.codigo.msregisterhexa")
+@ComponentScan("com.codigo.*")
+@EntityScan("com.codigo.*")
+@EnableFeignClients("com.codigo.*")
+@ImportAutoConfiguration({FeignAutoConfiguration.class})
+@EnableJpaRepositories("com.codigo")
 public class ApplicationLauncher {
 
     public static void main(String[] args) {

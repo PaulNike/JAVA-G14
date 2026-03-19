@@ -12,7 +12,7 @@
 
     <artifactId>domain</artifactId>
     <version>14.0.0</version>
-    <packaging>jar</packaging>
+
 
     <dependencies>
     </dependencies>

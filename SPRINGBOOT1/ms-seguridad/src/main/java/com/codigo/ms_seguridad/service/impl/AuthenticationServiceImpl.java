@@ -35,7 +35,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public Usuario signUpAdmin(SignUpRequest signUpRequest) {
         Usuario userAdmin = getUsuarioEntity(signUpRequest);
         Set<Rol> roles = new HashSet<>();
-        roles.add(getRoles(Role.USER));
+        //roles.add(getRoles(Role.USER));
         roles.add(getRoles(Role.ADMIN));
         userAdmin.setRoles(roles);
         return usuarioRepository.save(userAdmin);

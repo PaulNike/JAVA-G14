@@ -1,13 +1,19 @@
 package com.codigo.ms_seguridad.controller;
 
+import com.codigo.ms_seguridad.aggregates.request.SignInRequest;
 import com.codigo.ms_seguridad.aggregates.request.SignUpRequest;
+import com.codigo.ms_seguridad.aggregates.response.SignInResponse;
 import com.codigo.ms_seguridad.entity.Usuario;
 import com.codigo.ms_seguridad.service.AuthenticationService;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Key;
+import java.util.Base64;
 import java.util.List;
 
 
@@ -32,6 +38,23 @@ public class AuthenticationController {
     @GetMapping("/all")
     public ResponseEntity<List<Usuario>> getAll(){
         return ResponseEntity.ok(authenticationService.todos());
+    }
+
+    @GetMapping("/clave")
+    public ResponseEntity<String> getClave(){
+        Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
+        String clave = Base64.getEncoder().encodeToString(key.getEncoded());
+        return ResponseEntity.ok(clave);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<SignInResponse> login(@RequestBody SignInRequest signInRequest){
+        return ResponseEntity.ok(authenticationService.signIn(signInRequest));
+    }
+
+    @PostMapping("/refreshToken")
+    public ResponseEntity<SignInResponse> getNewAccessToken(@RequestHeader("refreshToken") String auth ){
+        return ResponseEntity.ok(authenticationService.getRokenByRefreshToken(auth));
     }
 
 

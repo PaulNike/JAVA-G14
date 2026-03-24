@@ -24,6 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfiguration {
 
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final UsuarioService usuarioService;
 
     @Bean
@@ -32,21 +33,21 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(request ->
                         request.requestMatchers(Constants.PERMIT_ENDPOINTS).permitAll()
                                 .requestMatchers(Constants.ENDPOINTS_ADMIN).hasAnyAuthority(Role.ADMIN.name())
-                                . requestMatchers(Constants.ENDPOINTS_USER).hasAnyAuthority(Role.USER.name())
+                                .requestMatchers(Constants.ENDPOINTS_USER).hasAnyAuthority(Role.USER.name())
                                 .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
-                .addFilterBefore(servicoJWT, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return httpSecurity.build();
     }
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetails(usuarioService.userDetailsService());
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider(
+                usuarioService.userDetailsService());
         authenticationProvider.setPasswordEncoder(passwordEncoder());
-
+        return authenticationProvider;
     }
 
     @Bean

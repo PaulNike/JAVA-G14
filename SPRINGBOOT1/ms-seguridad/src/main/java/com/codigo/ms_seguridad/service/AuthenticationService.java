@@ -13,5 +13,8 @@ public interface AuthenticationService {
     //Registrar Admin
     Usuario signUpAdmin(SignUpRequest signUpRequest);
     List<Usuario> todos();
+    SignInResponse signIn(SignInRequest signInRequest);
+    SignInResponse getRokenByRefreshToken(String refreshToken);
+
 
 }

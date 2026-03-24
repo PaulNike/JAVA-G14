@@ -74,12 +74,21 @@ public class JwtServiceImpl implements JwtService {
 
     @Override
     public String generateRefreshToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        return null;
+        return Jwts.builder()
+                .setClaims(extraClaims != null? extraClaims:new HashMap<>())
+                .setSubject(userDetails.getUsername())
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 600000))
+                .claim("type",Constants.REFRESH)
+                .signWith(getSignKey(), SignatureAlgorithm.HS512)
+                .compact();
     }
 
     @Override
     public boolean validateIsRefreshToken(String token) {
-        return false;
+        Claims claims = extractAllClaims(token);
+        String typeToken = claims.get("type",String.class);
+        return Constants.REFRESH.equalsIgnoreCase(typeToken);
     }
 
     private Key getSignKey(){

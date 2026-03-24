@@ -35,8 +35,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (!StringUtils.hasText(tokenExtraidoHeader) || !tokenExtraidoHeader.startsWith("Bearer ")){
                 filterChain.doFilter(request, response);
                 return;
+
+                //null
+            //""
+            //" "
+
+            //Basic abc123
         }
 
+        //Bearer xjhsbjuxcaksl
+        //xjhsbjuxcaksl
         String token = tokenExtraidoHeader.substring(7);
         String username = jwtService.extractUserName(token);
 
